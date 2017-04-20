@@ -105,7 +105,8 @@ class WebScrap:
     # 获取页面源码并将其存储到列表中
     def get_data(self, url, total_page):
         url = url + '&pn='
-        for i in range(1,total_page+1):
+        self.my_data.append('----- 原贴链接：' + tieba_url + ' -----' + '\n')
+        for i in range(1, total_page+1):
             print u'正在加载第%d页' % i
             my_page = urllib2.urlopen(url + str(i)).read()
             # 将my_page中的html代码处理并存储到my_data中
