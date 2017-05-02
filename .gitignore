@@ -6,3 +6,4 @@
 tmsf/scrapy.cfg
 
 tutorial
+*.json

@@ -13,7 +13,6 @@ class TmsfItem(scrapy.Item):
     ad_name = scrapy.Field()
     type = scrapy.Field()
     location = scrapy.Field()
-    news = scrapy.Field()
     price = scrapy.Field()
     tel = scrapy.Field()
     link = scrapy.Field()
