@@ -10,6 +10,7 @@ import scrapy
 
 class TmsfItem(scrapy.Item):
     name = scrapy.Field()
+    ad_name = scrapy.Field()
     type = scrapy.Field()
     location = scrapy.Field()
     price = scrapy.Field()

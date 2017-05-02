@@ -26,7 +26,8 @@ class TmsfSpider(scrapy.spiders.Spider):
         items = []
         for sel in response.xpath('//div[@class="build_des dingwei"]'):
             item = TmsfItem()
-            item['name'] = sel.xpath('div[@class="build_txt line26"]/div[@class="build_word01"]/div[@class="fl line26 mgl black"]/text()').extract()
+            item['name'] = sel.xpath('div[@class="build_txt line26"]/div[@class="build_word01"]/text()').extract()
+            item['ad_name'] = sel.xpath('div[@class="build_txt line26"]/div[@class="build_word01"]/div[@class="fl line26 mgl black"]/text()').extract()
             item['type'] = sel.xpath('div[@class="build_txt line26"]/div[@class="build_txt01"]/p[@class="build_txt03 colormg"]/text()').extract()
             item['location'] = sel.xpath('div[@class="build_txt line26"]/div[@class="build_txt01"]/p[@class="build_txt03 outof colormg"]/text()').extract()
             # item['price'] = sel.xpath('').extract()
