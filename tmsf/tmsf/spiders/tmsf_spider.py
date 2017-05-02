@@ -11,14 +11,15 @@ class TmsfSpider(CrawlSpider):
     name = "tmsf"
     allow_domains = ["http://www.tmsf.com"]
     start_urls = [
-        "http://www.tmsf.com/newhouse/property_searchall.htm?"
+        "http://www.tmsf.com/newhouse/property_searchall.htm?page="
     ]
 
     rules = (
-        Rule(LinkExtractor(allow=r'\?page=.*'),callback='parse_next')
+        Rule(LinkExtractor(allow=r'/newhouse/property_searchall.htm\?page=.*'),callback='parse_next')
     )
 
     def parse_next(self, response):
+        # item = TmsfItem()
         for sel in response.xpath('//div[@class="build_des dingwei"]'):
             item = TmsfItem()
             item['name'] = sel.xpath('//div[@class="build_word01"]/text()').extract()
@@ -32,4 +33,3 @@ class TmsfSpider(CrawlSpider):
             item['avail'] = sel.xpath('//div[@class="howsell"]//a/text()').extract()
             yield item
 
-    # def to_num(self, span_class):
