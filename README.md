@@ -7,6 +7,6 @@ tiebascrap.py抓取到的[某个帖子](https://tieba.baidu.com/p/2842785847)的
 
 ## scapy
 2017.4.25
-开始学习scrapy框架，最终目标是抓取透明[售房网](http://www.tmsf.com/newhouse/property_searchall.htm)的新房数据
+开始学习scrapy框架，最终目标是抓取[透明售房网](http://www.tmsf.com/newhouse/property_searchall.htm)的新房数据
 2017.5.7
 初步完成透明售房网的爬虫
