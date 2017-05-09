@@ -2,6 +2,8 @@
 
 import scrapy
 from tmsf.items import TmsfItem
+from scrapy.spiders import CrawlSpider, Rule
+from scrapy.linkextractors import  LinkExtractor
 
 headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'}
 
@@ -12,15 +14,18 @@ class TmsfSpider(scrapy.spiders.Spider):
     start_urls = ["http://www.tmsf.com/newhouse/property_searchall.htm?page=1"]
     # "http://www.tmsf.com/newhouse/property_searchall.htm?page="
     '''
-    def create_request(self):
-        global headers
-        url0 = "http://www.tmsf.com/newhouse/property_searchall.htm?page="
-        for i in range(10):
-            url = url0 + str(i)
-            self.start_urls.append(url)
-        for url in self.start_urls:
-            yield scrapy.Request(url, headers=headers, callback=self.parse_next)
+    rules = (
+        Rule(LinkExtractor(allow=("/newhouse/property_searchall", )), callback="parse_content")
+    )
     '''
+
+    def start_requests(self):
+        pages = []
+        for i in range(1,10):
+            url = "http://www.tmsf.com/newhouse/property_searchall.htm?page=%s" % i
+            page = scrapy.Request(url)
+            pages.append(page)
+        return pages
 
     # 将CSS数字替换成数字
     def rep_num(self, num):
@@ -42,4 +47,3 @@ class TmsfSpider(scrapy.spiders.Spider):
             # yield item
             items.append(item)
         return items
-
