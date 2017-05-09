@@ -34,7 +34,8 @@ class TmsfSpider(scrapy.spiders.Spider):
             item['name'] = sel.xpath('div[@class="build_pic"]/div[@class="dingwei"]/a/img/@title').extract()
             item['type'] = sel.xpath('div[@class="build_txt line26"]/div[@class="build_txt01"]/p[@class="build_txt03 colormg"]/text()').extract()
             item['location'] = sel.xpath('div[@class="build_txt line26"]/div[@class="build_txt01"]/p[@class="build_txt03 outof colormg"]/text()').extract()
-            item['price'] = map(self.rep_num, [''.join(sel.xpath('div[@class="word1"]/span').re(r'<span class="(.*)">'))])
+            item['price'] = map(self.rep_num, [''.join(sel.xpath('div[@class="word1"]/span/@class').extract())])
+            # 或结合正则匹配：item['price'] = map(self.rep_num, [''.join(sel.xpath('div[@class="word1"]/span').re(r'<span class="(.*)">'))])
             item['tel'] = sel.xpath('div[@class="build_txt05 txt05h25"]/font[@class="colordg"]/font[@class="colordg"]/text()').extract()
             item['link'] = [u"http://www.tmsf.com" + ''.join(sel.xpath('div[@class="build_pic"]/div[@class="dingwei"]/a/@href').extract())]
             item['avail'] = sel.xpath('div[@class="build_pic"]/div[@class="howsell"]//font[@class="colormg"]/a/text()').extract()
