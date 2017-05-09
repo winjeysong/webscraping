@@ -90,3 +90,7 @@ ROBOTSTXT_OBEY = False
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 FEED_EXPORT_ENCODING = 'utf-8'
+
+ITEM_PIPELINES = {
+    'tmsf.pipelines.TmsfPipeline': 800
+}
