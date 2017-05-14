@@ -16,3 +16,4 @@ class TmsfItem(scrapy.Item):
     tel = scrapy.Field()
     link = scrapy.Field()
     avail = scrapy.Field()
+    condition = scrapy.Field()
