@@ -25,7 +25,7 @@ class TmsfSpider(scrapy.spiders.Spider):
     # 请求页面(暂时测试1~9页）
     def start_requests(self):
         pages = []
-        for i in range(1, 10):
+        for i in range(1, 321):
             url = "http://www.tmsf.com/newhouse/property_searchall.htm?page=%s" % i
             page = scrapy.Request(url)
             pages.append(page)
